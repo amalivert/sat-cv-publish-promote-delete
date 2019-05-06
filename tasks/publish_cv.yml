@@ -1,7 +1,7 @@
 ---
 - name: "CV | Publish all content-views"
   command: >
-    hammer content-view publish --id {{ item.ID }}
+    hammer content-view publish --id {{ item["Content View ID"] }}
     --organization {{ org }}
     --description "published on {{ ansible_date_time.date }} {{ ansible_date_time.time }}"
   with_items: "{{ JSON_cv_list }}"

@@ -1,10 +1,11 @@
 ---
-- name: "CV | Purge old content views"
+#
+- name: "CV | Purge old content-views"
   command: >
     hammer content-view version delete --organization {{ org }}
-    --content-view-id  --version $version
-  with_nested:
-    - "{{ JSON_cv_list }}"
+    --content-view-id  {{ item["Content View ID"] }}
+    --version {{ item.Version }}
+  with_items: "{{ JSON_cv_purge_list }}"
   tags:
     - ccv
-    - promote
+    - publish
