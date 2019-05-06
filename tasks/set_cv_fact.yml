@@ -11,6 +11,6 @@
 - name: "CV | Set fact for content-view list"
   set_fact:
     JSON_cv_list="{{ cv_list.stdout | from_json }}"
-  tags:
-   - cv
-   - facts
+
+- debug:
+  var: JSON_cv_list

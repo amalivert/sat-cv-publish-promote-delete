@@ -11,3 +11,6 @@
 - name: "CV | Set composite fact for content-view list"
   set_fact:
     JSON_ccv_list="{{ ccv_list.stdout | from_json }}"
+
+- debug:
+  var: JSON_ccv_list

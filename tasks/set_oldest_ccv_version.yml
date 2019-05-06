@@ -7,3 +7,6 @@
   tags:
     - purge
     - facts
+
+- debug:
+  var: JSON_ccv_purge_list 
