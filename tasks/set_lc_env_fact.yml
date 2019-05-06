@@ -13,4 +13,4 @@
       List_lifecycle_env="{{ lifecycle_env_list.stdout }}"
 
 - debug:
-  var: List_lifecycle_env
+    var: List_lifecycle_env

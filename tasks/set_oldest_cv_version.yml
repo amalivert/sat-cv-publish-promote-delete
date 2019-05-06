@@ -9,4 +9,4 @@
     - facts
 
 - debug:
-  var: JSON_cv_purge_list
+    var: JSON_cv_purge_list

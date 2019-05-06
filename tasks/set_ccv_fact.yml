@@ -13,4 +13,4 @@
     JSON_ccv_list="{{ ccv_list.stdout | from_json }}"
 
 - debug:
-  var: JSON_ccv_list
+    var: JSON_ccv_list
