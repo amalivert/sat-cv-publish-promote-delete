@@ -1,7 +1,8 @@
 ---
 - name: "CV | Get content-view ID list"
   command: >
-     hammer --output json content-view version list
+     hammer --output json content-view list
+     --organization {{ org }} --composite no
   register: cv_list
   tags:
     - cv
