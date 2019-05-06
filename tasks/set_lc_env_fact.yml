@@ -10,7 +10,8 @@
 
 - name: "CV | Set fact for lifecycle environment list"
   set_fact:
-      List_lifecycle_env="{{ lifecycle_env_list.stdout }}"
+      List_lifecycle_env="{{ item }}"
+  with_items: "{{ lifecycle_env_list.stdout }}"
 
 - debug:
     var: List_lifecycle_env
