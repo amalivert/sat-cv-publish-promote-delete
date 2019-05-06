@@ -3,7 +3,7 @@
   command: >
     hammer content-view publish --id {{ item.ID }}
     --organization {{ org }}
-    --description "published on {{ vansible_date_time.date }} {{ ansible_date_time.time }}"
+    --description "published on {{ ansible_date_time.date }} {{ ansible_date_time.time }}"
   with_items: "{{ JSON_ccv_list }}"
   tags:
     - cv
