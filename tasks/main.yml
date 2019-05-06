@@ -1,2 +1,13 @@
 ---
 # tasks file for sat-cv-publish-promote-delete
+- include: set_cv_fact.yml
+- include: set_ccv_fact.yml
+- include: set_lc_env_fact.yml
+- include: publish_cv.yml
+- include: promote_cv.yml
+- include: publish_ccv.yml
+- include: promote_ccv.yml
+- include: set_oldest_cv_version.yml
+- include: set_oldest_ccv_version.yml
+- include: purge_ccv.yml
+- include: purge_cv.yml
