@@ -1,0 +1,12 @@
+---
+- name: "CV | Get composite content-view ID list"
+  command: >
+    hammer --output json content-view version list --composite yes
+  register: composite_ccv_list
+  tags:
+    - cv
+    - facts
+
+- name: "CV | Set composite fact for content-view list"
+  set_fact:
+    JSON_ccv_list="{{ JSON_ccv_list.stdout | from_json }}"

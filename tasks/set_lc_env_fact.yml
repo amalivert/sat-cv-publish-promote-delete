@@ -1,0 +1,13 @@
+---
+- name: "CV | Get lifecycle environment list"
+  shell: >
+    hammer --csv lifecycle-environment list --organization {{ org }}
+    | grep -vi '^ID' | grep -vi '^1'| sort -n
+  register: lifecycle_env_list
+  tags:
+    - cv
+    - facts
+
+- name: "CV | Set fact for lifecycle environment list"
+  set_fact:
+      List_lifecycle_env="{{ lifecycle_env_list.stdout }}"

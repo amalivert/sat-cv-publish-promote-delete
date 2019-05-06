@@ -1,0 +1,10 @@
+---
+- name: "CCV | Purge old composite content-views"
+  command: >
+    hammer content-view version delete --organization {{ org }}
+    --content-view-id  {{ item.ID }}
+    --version {{ item.Version }}
+  with_items: "{{ JSON_ccv_purge_list }}"
+  tags:
+    - ccv
+    - publish

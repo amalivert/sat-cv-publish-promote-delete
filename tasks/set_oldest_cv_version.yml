@@ -1,0 +1,9 @@
+---
+- name: "Create content-view purge facts"
+  set_fact:
+     JSON_cv_purge_list = "{{ item }}"
+  with_items: "{{ JSON_cv_list }}"
+  when: item.Version|int < "{{ item.Version|int - purge|int }}"
+  tags:
+    - purge
+    - facts
