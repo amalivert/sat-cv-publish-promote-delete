@@ -5,7 +5,7 @@
     --to-lifecycle-environment {{ item.1 }}
     --content-view-id {{ item.0.ID }}
     --version {{ item.0.Version }}
-    --description "promoted on {{ vansible_date_time.date ansible_date_time.time }}"
+    --description "promoted on {{ vansible_date_time.date }} {{ ansible_date_time.time }}"
   with_nested:
     - "{{ JSON_ccv_list }}"
     - "{{ List_lifecycle_env }}"
