@@ -2,13 +2,14 @@
 - name: "CV | Promote all content-views through lifecycle environment path"
   command: >
     hammer content-view version promote --organization {{ org }}
-    --to-lifecycle-environment {{ item.1 }}
-    --content-view-id {{ item.0.ID }}
+    --to-lifecycle-environment {{ item.1.ID }}
+    --content-view-id {{ item.0["Content View ID"] }}
     --version {{ item.0.Version }}
     --description "promoted on {{ ansible_date_time.date}}  {{ ansible_date_time.time }}"
   with_nested:
     - "{{ JSON_cv_list }}"
-    - "{{ List_lifecycle_env }}"
+    - "{{ JSON_lifecycle_env }}"
+  when: item.1.Name != 'Library' 
   tags:
     - ccv
     - promote
