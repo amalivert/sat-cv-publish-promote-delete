@@ -2,7 +2,7 @@
 - name: "Create composite content-view purge facts"
   command: >
     hammer --output json  content-view version list
-    --content-view-id {{ item }}
+    --content-view-id {{ item["Content View ID"] }}
     --environment Library
     --organization {{ org }}
   with_items: "{{ JSON_cv_list }}"
