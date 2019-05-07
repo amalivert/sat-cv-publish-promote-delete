@@ -4,12 +4,13 @@
     hammer content-view version promote --organization {{ org }}
     --to-lifecycle-environment-id {{ item.1.ID }}
     --content-view-id {{ item[0]["Content View ID"] }}
-    --version {{ item.0.Version }}
-    --description "promoted on {{ ansible_date_time.date}}  {{ ansible_date_time.time }}"
+    --version {{ item.2.Version }}
+    --description "promoted on {{ ansible_date_time.date}} {{ ansible_date_time.time }}"
   with_nested:
     - "{{ JSON_cv_list }}"
     - "{{ JSON_lifecycle_env }}"
-  when: item.1.Name != 'Library'
+    - "{{ JSON_oldest_cv_version }}"
+  when: item.1.Name != 'Library' and item.2.Name.find("item.0.Name") != -1
   tags:
     - ccv
     - promote

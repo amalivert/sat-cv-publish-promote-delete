@@ -1,12 +1,18 @@
 ---
 - name: "Create composite content-view purge facts"
-  set_fact:
-     JSON_ccv_purge_list = "{{ item }}"
+  command: >
+    hammer --output json  content-view version list
+    --content-view-id {{ item }}
+    --environment Library
+    --organization {{ org }}
   with_items: "{{ JSON_ccv_list }}"
-  when: item.Version|int < "{{ item.Version|int - purge|int }}"
   tags:
     - purge
     - facts
+#
+- name: "CV | Set fact for latest composite content-view versions"
+  set_fact:
+      JSON_oldest_ccv_version="{{ lifecycle_env_list.stdout | from_json }}"
 
 - debug:
-    var: JSON_ccv_purge_list 
+    var: JSON_oldest_ccv_version
