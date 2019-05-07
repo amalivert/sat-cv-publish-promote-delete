@@ -13,7 +13,7 @@
 
 - name: "CV | Set fact for latest composite content-view versions"
   set_fact:
-      JSON_oldest_ccv_version="{{ ccv_latest_version | from_json }}"
+      JSON_oldest_ccv_version="{{ ccv_latest_version.results }}"
 
 - debug:
     var: JSON_oldest_ccv_version
