@@ -1,7 +1,7 @@
 ---
 - name: "CV | Get lifecycle environment list"
   command: >
-    hammer --json lifecycle-environment list --organization {{ org }}
+    hammer --output json lifecycle-environment list --organization {{ org }}
     --order "ID ASC"
   register: lifecycle_env_list
   tags:
