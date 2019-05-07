@@ -1,5 +1,5 @@
 ---
-- name: "Create composite content-view purge facts"
+- name: "Get composite content-view purge facts"
   command: >
     hammer --output json  content-view version list
     --content-view-id {{ item["Content View ID"] }}
@@ -13,7 +13,7 @@
 
 - name: "CV | Set fact for latest composite content-view versions"
   set_fact:
-      JSON_oldest_ccv_version="{{ ccv_latest_version.stdout | from_json }}"
+      JSON_oldest_ccv_version="{{ ccv_latest_version | from_json }}"
 
 - debug:
     var: JSON_oldest_ccv_version
