@@ -6,13 +6,14 @@
     --environment Library
     --organization {{ org }}
   with_items: "{{ JSON_ccv_list }}"
+  register: ccv_latest_version
   tags:
     - purge
     - facts
-#
+
 - name: "CV | Set fact for latest composite content-view versions"
   set_fact:
-      JSON_oldest_ccv_version="{{ lifecycle_env_list.stdout | from_json }}"
+      JSON_oldest_ccv_version="{{ ccv_latest_version.stdout | from_json }}"
 
 - debug:
     var: JSON_oldest_ccv_version
